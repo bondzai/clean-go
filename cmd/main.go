@@ -1,6 +1,7 @@
 package main
 
 import (
+	"clean-go/config"
 	"clean-go/internal/handlers"
 	"clean-go/internal/repositories"
 	"clean-go/internal/services"
@@ -12,10 +13,10 @@ import (
 
 func main() {
 	redisClient, err := redis.NewClient(redis.Config{
-		Address:  "localhost:6379",
-		Username: "",
-		Password: "",
-		DB:       0,
+		Address:  config.AppConfig.RedisURL,
+		Username: config.AppConfig.RedisUser,
+		Password: config.AppConfig.RedisPassword,
+		DB:       config.AppConfig.RedisDatabase,
 	})
 	if err != nil {
 		log.Fatalf("Failed to connect to Redis: %v", err)
@@ -36,7 +37,7 @@ func main() {
 	events.Put("/:id", eventHandler.UpdateEvent)
 	events.Delete("/:id", eventHandler.DeleteEvent)
 
-	if err := app.Listen(":9000"); err != nil {
+	if err := app.Listen(":" + config.AppConfig.AppPort); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
 }
