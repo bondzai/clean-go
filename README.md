@@ -1,0 +1,2 @@
+# clean-go
+For friends
