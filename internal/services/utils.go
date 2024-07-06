@@ -1,7 +1,7 @@
 package services
 
 import (
-	"clean-go/internal/utils/errs"
+	"clean-go/pkg/utils/errs"
 	"log"
 )
 

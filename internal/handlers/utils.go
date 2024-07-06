@@ -1,7 +1,7 @@
 package handlers
 
 import (
-	"clean-go/internal/utils/errs"
+	"clean-go/pkg/utils/errs"
 
 	"github.com/gofiber/fiber/v2"
 )
