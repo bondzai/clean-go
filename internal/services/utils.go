@@ -11,7 +11,7 @@ func handleDbError(err error) error {
 	}
 
 	if err.Error() == "event not found" {
-		return errs.NewBadRequestError("event not found")
+		return errs.NewNotFoundError("event not found")
 	}
 
 	log.Println(err)
